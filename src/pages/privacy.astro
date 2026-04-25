@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SUPPORT_EMAIL } from '../config';
+---
+
+<BaseLayout
+  title="Privacy Policy — OverBlock"
+  description="OverBlock privacy policy. We collect no personal data."
+>
+  <Nav />
+  <main class="privacy">
+    <div class="privacy-inner">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: April 21, 2026</p>
+
+      <section>
+        <h2>Overview</h2>
+        <p>OverBlock ("we," "us," or "our") is committed to protecting your privacy. This policy explains how we handle information in connection with the OverBlock iOS app and the website at overblock.app.</p>
+      </section>
+
+      <section>
+        <h2>Information We Collect</h2>
+        <p><strong>OverBlock does not collect, transmit, or store any personal information.</strong> All data you enter — including pay rates, block times, and session data — is stored locally on your device using iOS standard storage and is never sent to any server.</p>
+        <p>We do not collect:</p>
+        <ul>
+          <li>Names, email addresses, or account information</li>
+          <li>Location data</li>
+          <li>Device identifiers</li>
+          <li>Usage analytics or crash reports</li>
+          <li>Payment information</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How We Use Information</h2>
+        <p>Because we collect no personal information, there is no personal information to use.</p>
+        <p>Data you enter into OverBlock (such as your hourly rate or block times) is stored locally on your device using Apple's standard iOS storage. This data is used solely to power the app's features and is not accessible to us.</p>
+      </section>
+
+      <section>
+        <h2>Third-Party Services</h2>
+        <p>The OverBlock app does not integrate any third-party analytics, advertising, or data-collection services.</p>
+        <p>The OverBlock website (overblock.app) does not use cookies or third-party tracking scripts. If analytics are added in the future, this policy will be updated before any tracking code is deployed, and only privacy-respecting, cookieless analytics will be used.</p>
+        <p>The website may embed a video hosted on YouTube or Vimeo. If you interact with an embedded video, that provider's privacy policy applies. You can review YouTube's privacy policy at youtube.com/privacy and Vimeo's at vimeo.com/privacy.</p>
+      </section>
+
+      <section>
+        <h2>Children's Privacy</h2>
+        <p>OverBlock is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+      </section>
+
+      <section>
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy as the app evolves — for example, if we introduce optional account features in a future version. When we do, we will update the "Last updated" date above. We encourage you to review this policy periodically.</p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>If you have questions about this privacy policy, contact us at <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .privacy {
+    padding: 64px 24px 96px;
+  }
+
+  .privacy-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .last-updated {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 56px;
+  }
+
+  section {
+    margin-bottom: 44px;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--color-text-muted);
+    line-height: 1.85;
+    margin-bottom: 12px;
+    font-size: 0.975rem;
+  }
+
+  ul {
+    color: var(--color-text-muted);
+    padding-left: 24px;
+    line-height: 2.1;
+    font-size: 0.975rem;
+    margin-bottom: 12px;
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+</style>

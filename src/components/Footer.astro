@@ -1,0 +1,70 @@
+---
+import { SUPPORT_EMAIL } from '../config';
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="wordmark">OverBlock</span>
+      <span class="copy">© 2026 OverBlock</span>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href={`mailto:${SUPPORT_EMAIL}`}>Support</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 32px 24px;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    color: var(--color-dark-text);
+  }
+
+  .copy {
+    font-size: 0.8125rem;
+    color: var(--color-dark-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.8125rem;
+    color: var(--color-dark-muted);
+    transition: color 150ms ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-dark-text);
+  }
+</style>

@@ -1,0 +1,70 @@
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #fafbfc;
+  --color-text: #0a0f1e;
+  --color-text-muted: #5a6a7e;
+  --color-accent: #00c896;
+  --color-accent-hover: #00a87a;
+  --color-surface: #f0f4f8;
+  --color-border: #e4eaf0;
+  --color-dark: #0b1120;
+  --color-dark-text: #ffffff;
+  --color-dark-muted: #8a9ab0;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --max-width: 1120px;
+  --section-pad: clamp(72px, 10vw, 120px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

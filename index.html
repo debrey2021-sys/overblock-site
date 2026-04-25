@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>OverBlock — Real-time overblock pay for pilots</title>
+<meta name="description" content="OverBlock calculates the exact moment your flight goes overblock and shows your earnings accumulating in real time. No math. No guessing."/>
+<link rel="icon" href="./assets/app-icon.png"/>
+<link rel="stylesheet" href="./colors_and_type.css"/>
+<link rel="stylesheet" href="./landing.css"/>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="./Hero.jsx"></script>
+<script type="text/babel" src="./Sections.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const TWEAK_DEFAULTS = { accent: 'mint', heroVariant: 'classic' };
+
+const ACCENTS = {
+  mint:   { value: 'rgb(0, 191, 143)',   soft: 'rgba(0, 191, 143, 0.12)',   flash: 'rgb(26, 181, 128)' },
+  sky:    { value: 'rgb(56, 189, 248)',   soft: 'rgba(56, 189, 248, 0.14)',  flash: 'rgb(56, 189, 248)' },
+  amber:  { value: 'rgb(255, 166, 0)',    soft: 'rgba(255, 166, 0, 0.14)',   flash: 'rgb(255, 166, 0)'  },
+  violet: { value: 'rgb(167, 139, 250)',  soft: 'rgba(167, 139, 250, 0.14)', flash: 'rgb(167, 139, 250)'},
+};
+
+function Nav() {
+  return (
+    <nav className="nav">
+      <div className="nav__inner">
+        <div className="nav__brand">
+          <img src="./assets/app-icon.png" alt="OverBlock icon"/>
+          <span>OVERBLOCK</span>
+        </div>
+        <div className="nav__links">
+          <a href="#how">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <button className="nav__cta" onClick={() => document.querySelector('#beta input')?.focus()}>
+          REQUEST BETA
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+function TweaksPanel({ state, setState }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const handler = (e) => {
+      if (!e.data || typeof e.data !== 'object') return;
+      if (e.data.type === '__activate_edit_mode') setVisible(true);
+      if (e.data.type === '__deactivate_edit_mode') setVisible(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+  if (!visible) return null;
+  const update = (k, v) => {
+    setState({ ...state, [k]: v });
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [k]: v } }, '*');
+  };
+  return (
+    <div className="tweaks-panel">
+      <div className="tweaks-panel__title">TWEAKS</div>
+      <div className="tweaks-panel__row">
+        <div className="tweaks-panel__label">Accent</div>
+        <div className="tweaks-panel__swatches">
+          {Object.keys(ACCENTS).map(k => (
+            <button key={k} className={`tweaks-swatch ${state.accent === k ? 'active' : ''}`}
+              onClick={() => update('accent', k)}
+              style={{ background: ACCENTS[k].value, color: ACCENTS[k].value }} title={k}/>
+          ))}
+        </div>
+      </div>
+      <div className="tweaks-panel__row">
+        <div className="tweaks-panel__label">Hero</div>
+        <select className="tweaks-panel__select" value={state.heroVariant}
+          onChange={e => update('heroVariant', e.target.value)}>
+          <option value="classic">Classic</option>
+          <option value="giant">Giant counter</option>
+          <option value="split">Split countdown</option>
+        </select>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [state, setState] = useState(TWEAK_DEFAULTS);
+  const accent = ACCENTS[state.accent] || ACCENTS.mint;
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent',       accent.value);
+    document.documentElement.style.setProperty('--accent-soft',  accent.soft);
+    document.documentElement.style.setProperty('--accent-rgb',   accent.value.replace('rgb(','').replace(')',''));
+    document.documentElement.style.setProperty('--ob-accent',    accent.value);
+    document.documentElement.style.setProperty('--ob-flash-green', accent.flash);
+  }, [accent]);
+
+  return (
+    <>
+      <Nav/>
+      <div className="hero-wrap">
+        {state.heroVariant === 'giant'   && <GiantHero/>}
+        {state.heroVariant === 'split'   && <SplitHero/>}
+        {state.heroVariant === 'classic' && <Hero/>}
+      </div>
+      <div className="section-sep"/>
+      <div id="how"><HowItWorks/></div>
+      <div className="section-sep"/>
+      <div id="features"><Features/></div>
+      <div className="section-sep"/>
+      <Testimonial/>
+      <div className="section-sep"/>
+      <div id="faq"><Faq/></div>
+      <div className="section-sep"/>
+      <div id="beta"><FinalCta/></div>
+      <Footer/>
+      <TweaksPanel state={state} setState={setState}/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

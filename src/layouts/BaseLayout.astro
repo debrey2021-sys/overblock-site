@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import { SITE_URL, APP_STORE_ID } from '../config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "OverBlock - Know What You're Earning When Block Goes Long",
+  description = "Real-time overblock pay tracker for airline pilots. Enter your rate, start the clock, watch your earnings update live.",
+  ogImage = "/og-image.png"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${SITE_URL}${Astro.url.pathname}`} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${SITE_URL}${ogImage}`} />
+    <meta property="og:url" content={SITE_URL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OverBlock" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE_URL}${ogImage}`} />
+
+    {APP_STORE_ID !== 'PLACEHOLDER' && (
+      <meta name="apple-itunes-app" content={`app-id=${APP_STORE_ID}`} />
+    )}
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "OverBlock",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "iOS",
+        "description": "Real-time overblock pay tracker for airline pilots.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": SITE_URL
+      })}
+    />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll('.fade-up').forEach((element) => {
+        observer.observe(element);
+      });
+    </script>
+  </body>
+</html>

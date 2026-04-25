@@ -1,0 +1,178 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Enter your details',
+    image: '/mockups/setup-light.png',
+    alt: 'OverBlock setup screen for role, rate, and block time',
+    caption: 'Your role, your rate, your scheduled block time. About 30 seconds.',
+    position: 'center 56%'
+  },
+  {
+    number: '02',
+    title: 'Start your session',
+    image: '/mockups/countdown.png',
+    alt: 'OverBlock session screen showing the live countdown state',
+    caption: 'OverBlock watches the clock so you do not have to.',
+    position: 'center 54%'
+  },
+  {
+    number: '03',
+    title: 'Watch earnings update',
+    image: '/mockups/live-crew.png',
+    alt: 'OverBlock live crew earnings screen',
+    caption: 'Real-time earnings for you and your crew the moment block goes long.',
+    position: 'center 58%'
+  }
+];
+---
+
+<section class="product" id="how-it-works">
+  <div class="product-inner">
+    <div class="product-lead fade-up">
+      <p class="eyebrow">How It Works</p>
+      <h2>Three taps. Then watch.</h2>
+      <p>
+        A simple setup, a clear session view, and live totals that update without effort.
+      </p>
+    </div>
+
+    <div class="steps">
+      {steps.map((step, index) => (
+        <article class="step fade-up" style={`transition-delay: ${index * 80}ms`}>
+          <div class="step-heading">
+            <span class="step-number">{step.number}</span>
+            <h3>{step.title}</h3>
+          </div>
+
+          <div class="device-shot">
+            <img
+              src={step.image}
+              alt={step.alt}
+              width="700"
+              height="1000"
+              style={`object-position: ${step.position}`}
+            />
+          </div>
+
+          <p class="caption">{step.caption}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product {
+    padding: var(--section-pad) 24px;
+    background: var(--color-surface);
+  }
+
+  .product-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .product-lead {
+    max-width: 700px;
+    margin: 0 auto 54px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  h2 {
+    margin-top: 16px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--color-text);
+  }
+
+  .product-lead p:last-child {
+    margin-top: 18px;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+
+  .step {
+    border-radius: 26px;
+    padding: 30px 24px 28px;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(228, 234, 240, 0.95);
+    box-shadow: 0 18px 40px rgba(10, 15, 30, 0.05);
+  }
+
+  .step-heading {
+    min-height: 136px;
+  }
+
+  .step-number {
+    display: block;
+    font-size: 4.6rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: rgba(0, 200, 150, 0.18);
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+  }
+
+  .device-shot {
+    margin-top: 8px;
+    aspect-ratio: 0.7;
+    overflow: hidden;
+    border-radius: 34px;
+    background: #0e1526;
+    box-shadow: 0 24px 56px rgba(11, 17, 32, 0.12);
+  }
+
+  .device-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+  }
+
+  .caption {
+    margin-top: 20px;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 960px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .step-heading {
+      min-height: auto;
+      margin-bottom: 18px;
+    }
+
+    .device-shot {
+      max-width: 330px;
+    }
+  }
+</style>

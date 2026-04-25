@@ -1,0 +1,345 @@
+---
+import { APP_STORE_URL } from '../config';
+---
+
+<section class="hero">
+  <div class="hero-backdrop" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy fade-up">
+      <p class="hero-eyebrow">FOR AIRLINE PILOTS · FREE ON iOS</p>
+
+      <h1 class="hero-title">
+        <span>Track</span>
+        <span class="accent">overblock pay</span>
+        <span class="line-nowrap">in real time<span class="dot">.</span></span>
+      </h1>
+
+      <p class="hero-sub">
+        Enter your rate and block time.
+        <br />
+        OverBlock starts tracking the second overblock begins.
+      </p>
+
+      <div class="hero-actions">
+        <a href={APP_STORE_URL} class="app-store-badge" aria-label="Download OverBlock on the App Store">
+          <svg class="badge-apple" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.7 12.6c0-2 1.6-3 1.7-3.1-1-.6-2.4-.7-2.9-.7-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.6-1.3 0-2.5.8-3.1 1.9-1.3 2.3-.3 5.7.9 7.4.6.8 1.3 1.7 2.2 1.6.9 0 1.2-.6 2.3-.6 1 0 1.3.6 2.3.6 1 0 1.6-.8 2.2-1.6.7-.9 1-1.8 1-1.9-.1 0-1.9-.8-1.9-3.7zM13.9 7.7c.5-.6.9-1.4.8-2.2-.7 0-1.6.5-2.1 1.1-.5.5-.9 1.4-.8 2.1.8.1 1.6-.4 2.1-1z" fill="currentColor"/>
+          </svg>
+          <span class="badge-copy">
+            <span class="badge-overline">Download on the</span>
+            <span class="badge-title">App Store</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up" style="transition-delay: 90ms">
+      <span class="hero-phone-glow" aria-hidden="true"></span>
+      <img
+        src="/mockups/live-crew.png"
+        alt="OverBlock live earnings screen showing real-time pay for Captain and First Officer"
+        width="467"
+        height="960"
+        class="hero-phone"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 136px 32px 74px;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(0, 200, 150, 0.085), transparent 28%),
+      radial-gradient(circle at 82% 78%, rgba(10, 15, 30, 0.065), transparent 22%),
+      linear-gradient(180deg, #fbfcfd 0%, #f8fafc 100%);
+    overflow: hidden;
+  }
+
+  .hero-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22)),
+      repeating-linear-gradient(
+        90deg,
+        rgba(10, 15, 30, 0.03) 0,
+        rgba(10, 15, 30, 0.03) 1px,
+        transparent 1px,
+        transparent 88px
+      );
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.12));
+    pointer-events: none;
+    animation: hero-drift 18s ease-in-out infinite alternate;
+  }
+
+  .hero-backdrop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(10, 15, 30, 0.032) 1px, transparent 0);
+    background-size: 26px 26px;
+    opacity: 0.26;
+    mix-blend-mode: multiply;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: min(1400px, calc(100vw - 64px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(400px, 0.82fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 58px);
+  }
+
+  .hero-copy {
+    max-width: 700px;
+    padding-left: 0;
+    margin-left: -8px;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 22px;
+    color: var(--color-accent);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-size: clamp(4.2rem, 8.3vw, 6.85rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    color: var(--color-text);
+  }
+
+  .hero-title > span {
+    display: block;
+  }
+
+  .hero-title .accent,
+  .hero-title .dot {
+    color: var(--color-accent);
+  }
+
+  .line-nowrap {
+    white-space: nowrap;
+  }
+
+  .hero-sub {
+    margin-top: 34px;
+    max-width: 640px;
+    color: var(--color-text-muted);
+    font-size: clamp(1.18rem, 1.8vw, 1.3rem);
+    line-height: 1.45;
+  }
+
+  .hero-actions {
+    margin-top: 42px;
+  }
+
+  .app-store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 17px 11px 15px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #111111 0%, #000000 100%);
+    color: #fff;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.08) inset,
+      0 14px 28px rgba(10, 15, 30, 0.12);
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+
+  .app-store-badge:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.08) inset,
+      0 18px 32px rgba(10, 15, 30, 0.16);
+  }
+
+  .badge-apple {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .badge-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+  }
+
+  .badge-overline {
+    font-size: 0.67rem;
+    letter-spacing: 0.01em;
+    opacity: 0.9;
+  }
+
+  .badge-title {
+    margin-top: 3px;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 22px;
+  }
+
+  .hero-phone-glow {
+    position: absolute;
+    width: min(100%, 470px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle,
+        rgba(0, 200, 150, 0.12) 0%,
+        rgba(0, 200, 150, 0.075) 28%,
+        rgba(0, 200, 150, 0.03) 52%,
+        rgba(0, 200, 150, 0) 72%
+      );
+    filter: blur(22px);
+    transform: translate(54px, 6px);
+    pointer-events: none;
+  }
+
+  .hero-phone {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 540px);
+    height: auto;
+    transform: rotate(8deg) translate(18px, 14px);
+    filter: drop-shadow(0 34px 54px rgba(10, 15, 30, 0.16));
+    transform-origin: center center;
+  }
+
+  @keyframes hero-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.97;
+    }
+
+    50% {
+      transform: translate3d(-1.2%, 0.8%, 0) scale(1.015);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate3d(1.4%, -1%, 0) scale(1.03);
+      opacity: 0.985;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-backdrop {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero {
+      padding-top: 116px;
+      padding-bottom: 64px;
+    }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .hero-copy {
+      order: 2;
+      max-width: 100%;
+      margin-left: 0;
+    }
+
+    .hero-visual {
+      order: 1;
+      justify-content: center;
+      padding-right: 0;
+    }
+
+    .hero-phone-glow {
+      width: min(100%, 360px);
+      transform: translate(18px, 0);
+    }
+
+    .hero-phone {
+      width: min(100%, 410px);
+      transform: rotate(5deg) translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 102px 16px 48px;
+    }
+
+    .hero-inner {
+      max-width: calc(100vw - 32px);
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 16px;
+      font-size: 0.79rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-title {
+      font-size: clamp(3.1rem, 16vw, 4.9rem);
+      line-height: 0.95;
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 1.01rem;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+    }
+
+    .app-store-badge {
+      padding: 10px 15px 10px 13px;
+    }
+
+    .badge-apple {
+      width: 24px;
+      height: 24px;
+    }
+
+    .badge-overline {
+      font-size: 0.62rem;
+    }
+
+    .badge-title {
+      font-size: 1.2rem;
+    }
+
+    .hero-phone {
+      width: min(100%, 310px);
+      transform: rotate(4deg);
+    }
+
+    .hero-phone-glow {
+      width: min(100%, 280px);
+      transform: translate(8px, -4px);
+      filter: blur(18px);
+    }
+  }
+</style>

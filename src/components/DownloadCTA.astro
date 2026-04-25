@@ -1,0 +1,71 @@
+---
+import { APP_STORE_URL } from '../config';
+---
+
+<section class="cta">
+  <div class="cta-inner fade-up">
+    <p class="eyebrow">Download</p>
+    <h2>Your overblock pay, tracked in real time.</h2>
+    <p class="sub">Free on iOS. No account. Start in 30 seconds.</p>
+    <a href={APP_STORE_URL} class="badge-link" aria-label="Download OverBlock on the App Store">
+      <img
+        src="/app-store-badge.svg"
+        alt="Download on the App Store"
+        width="210"
+        height="70"
+        class="badge-white"
+      />
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: var(--section-pad) 24px;
+    background: var(--color-dark);
+  }
+
+  .cta-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .eyebrow {
+    color: var(--color-accent);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-dark-text);
+    max-width: 12ch;
+  }
+
+  .sub {
+    color: var(--color-dark-muted);
+    font-size: 1rem;
+    margin-top: -8px;
+  }
+
+  .badge-white {
+    width: 210px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    transition: opacity 150ms ease;
+  }
+
+  .badge-link:hover .badge-white {
+    opacity: 0.86;
+  }
+</style>

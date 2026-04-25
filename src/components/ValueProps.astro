@@ -1,0 +1,228 @@
+<section class="value-props" id="features">
+  <div class="value-props-inner">
+    <div class="section-lead fade-up">
+      <p class="eyebrow">WHY PILOTS USE OVERBLOCK</p>
+      <h2>Built for speed, accuracy, and privacy<span class="dot">.</span></h2>
+      <p class="intro">
+        Everything you need to start tracking overblock pay in seconds —
+        <br />
+        without an account, setup friction, or extra noise.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card fade-up">
+        <span class="card-trim" aria-hidden="true"></span>
+        <h3>Live & Accurate</h3>
+        <span class="card-rule" aria-hidden="true"></span>
+        <p>Track your overblock pay in real time, down to the second.</p>
+      </article>
+
+      <article class="card fade-up" style="transition-delay: 80ms">
+        <span class="card-trim" aria-hidden="true"></span>
+        <h3>Setup in Seconds</h3>
+        <span class="card-rule" aria-hidden="true"></span>
+        <p>Enter your rate and block time. You’re ready to go.</p>
+      </article>
+
+      <article class="card fade-up" style="transition-delay: 160ms">
+        <span class="card-trim" aria-hidden="true"></span>
+        <h3>Private by Design</h3>
+        <span class="card-rule" aria-hidden="true"></span>
+        <p>No accounts. No tracking. All data stays on your device.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .value-props {
+    position: relative;
+    padding: clamp(90px, 12vw, 128px) 24px var(--section-pad);
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .value-props::before,
+  .value-props::after {
+    content: '';
+    position: absolute;
+    bottom: 108px;
+    width: 132px;
+    height: 168px;
+    pointer-events: none;
+    opacity: 0.34;
+    background-image: radial-gradient(circle, rgba(10, 15, 30, 0.12) 1.6px, transparent 1.6px);
+    background-size: 16px 16px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  }
+
+  .value-props::before {
+    left: -18px;
+  }
+
+  .value-props::after {
+    right: -18px;
+  }
+
+  .value-props-inner {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .section-lead {
+    max-width: 980px;
+    margin: 0 auto 68px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    color: var(--color-accent);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-top: 28px;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+    color: var(--color-text);
+  }
+
+  .dot {
+    color: var(--color-accent);
+  }
+
+  .intro {
+    max-width: 980px;
+    margin: 28px auto 0;
+    color: var(--color-text-muted);
+    font-size: clamp(1.26rem, 2.2vw, 1.42rem);
+    line-height: 1.6;
+    letter-spacing: -0.015em;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+  }
+
+  .card {
+    position: relative;
+    min-height: 406px;
+    padding: 44px 58px 48px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+    border: 1px solid rgba(228, 234, 240, 0.95);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 22px 52px rgba(10, 15, 30, 0.05);
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 200, 150, 0.24);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 28px 58px rgba(10, 15, 30, 0.08);
+  }
+
+  .card-trim {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
+  h3 {
+    margin-top: 72px;
+    color: var(--color-text);
+    font-size: clamp(1.6rem, 2vw, 1.92rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+  }
+
+  .card-rule {
+    display: block;
+    width: 40px;
+    height: 5px;
+    border-radius: 999px;
+    margin-top: 28px;
+    background: #d3dae4;
+  }
+
+  .card p {
+    max-width: 290px;
+    margin-top: 26px;
+    color: var(--color-text-muted);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 1080px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      min-height: auto;
+    }
+
+    .value-props::before,
+    .value-props::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .value-props {
+      padding-inline: 16px;
+    }
+
+    .section-lead {
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: clamp(2.45rem, 10vw, 3.3rem);
+    }
+
+    .intro {
+      margin-top: 20px;
+      font-size: 1.08rem;
+    }
+
+    .intro br {
+      display: none;
+    }
+
+    .card {
+      padding: 30px 28px 34px;
+      border-radius: 20px;
+    }
+
+    h3 {
+      margin-top: 46px;
+      font-size: 1.8rem;
+    }
+  }
+</style>

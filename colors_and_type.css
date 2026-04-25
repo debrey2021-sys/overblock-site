@@ -1,0 +1,222 @@
+/* OverBlock Design System — tokens + semantic aliases
+ * ------------------------------------------------------------------
+ * Import into any HTML file as the single source of truth.
+ * Fonts: SF Pro Display (shipped in fonts/) for labels + earnings.
+ *        JetBrains Mono (Google Fonts) as SF Mono substitute for the
+ *        clock role — SF Mono files not provided, flagged in README.
+ * ------------------------------------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* SF Pro Display — shipped OTFs, resolved relative to this CSS file.
+ * Paths work from any consumer that imports this file (root or ui_kits/*). */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF') format('opentype');
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('fonts/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* ============================================================
+   *  COLOR — dark-first (the primary register)
+   * ============================================================ */
+
+  /* Surfaces */
+  --ob-bg:               rgb(10, 14, 28);     /* Page background — midnight navy */
+  --ob-surface:          rgb(18, 22, 38);     /* Elevated card surface */
+
+  /* Accents (the one-accent rule: obAccent only; obAmber is a STATE color) */
+  --ob-accent:           rgb(0, 191, 143);    /* Mint-teal — earnings, CTAs, money, active */
+  --ob-amber:            rgb(255, 166, 0);    /* Countdown state ONLY — never elsewhere */
+  --ob-flash-green:      rgb(26, 181, 128);   /* Threshold-crossing pulse ONLY — never static */
+
+  /* Text hierarchy on dark surfaces */
+  --ob-text-primary:     rgba(255, 255, 255, 0.72);
+  --ob-text-secondary:   rgba(255, 255, 255, 0.55);
+  --ob-text-tertiary:    rgba(255, 255, 255, 0.42);
+
+  /* Muted / subtle utility shades (adaptive Setup + Summary screens) */
+  --ob-muted:            rgba(255, 255, 255, 0.45);
+  --ob-muted-strong:     rgba(255, 255, 255, 0.72);
+  --ob-muted-subtle:     rgba(255, 255, 255, 0.28);
+  --ob-muted-disabled:   rgba(255, 255, 255, 0.20);
+
+  /* Dividers, borders, ghost fills */
+  --ob-divider:          rgba(255, 255, 255, 0.18);
+  --ob-divider-soft:     rgba(255, 255, 255, 0.12);
+  --ob-button-ghost:     rgba(255, 255, 255, 0.07);
+
+  /* Flash pulse opacity thresholds — per earnings milestone */
+  --ob-flash-10:         0.10;
+  --ob-flash-25:         0.18;
+  --ob-flash-50:         0.27;
+  --ob-flash-100:        0.38;
+
+  /* ============================================================
+   *  TYPOGRAPHY — three roles, closed size sets
+   * ============================================================ */
+
+  /* Font families — SF Pro Display shipped; JetBrains Mono is an SF Mono substitute */
+  --ob-font-label:       'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  --ob-font-earnings:    'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ob-font-clock:       'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* SF Pro Display ships no true Semibold OTF in this bundle.
+   * For labels at 600, the browser will synthesize bold from 500 Medium —
+   * acceptable for web mocks. If you want exact SF Pro Text Semibold, add it. */
+
+  /* Weights */
+  --ob-weight-label:     600;    /* semibold */
+  --ob-weight-earnings:  700;    /* bold */
+  --ob-weight-clock:     400;    /* regular */
+  --ob-weight-body:      400;    /* regular (body copy — rarely used) */
+
+  /* Kerning (letter-spacing) — applied to ALL-CAPS labels */
+  --ob-track-hero:       0.24em;   /* 3 (EARNINGS BEGIN IN) */
+  --ob-track-section:    0.20em;   /* 2.5 (section headers, CREW TOTAL) */
+  --ob-track-row:        0.12em;   /* 1.5 (row labels) */
+  --ob-track-label:      0.16em;   /* 2 (BLOCK OUT / SCHEDULED BLOCK) */
+
+  /* Clock sizes — approved set (pt ≈ px) */
+  --ob-clock-16: 16px; --ob-clock-18: 18px; --ob-clock-28: 28px;
+  --ob-clock-38: 38px; --ob-clock-44: 44px; --ob-clock-50: 50px;
+  --ob-clock-54: 54px; --ob-clock-64: 64px; --ob-clock-72: 72px;
+  --ob-clock-76: 76px; --ob-clock-88: 88px; --ob-clock-96: 96px;
+  --ob-clock-100: 100px;
+
+  /* Label sizes — approved set */
+  --ob-label-9: 9px;   --ob-label-10: 10px; --ob-label-11: 11px;
+  --ob-label-12: 12px; --ob-label-13: 13px; --ob-label-14: 14px;
+  --ob-label-15: 15px; --ob-label-16: 16px; --ob-label-17: 17px;
+  --ob-label-19: 19px; --ob-label-20: 20px; --ob-label-22: 22px;
+
+  /* Earnings sizes — approved set */
+  --ob-earn-16: 16px;  --ob-earn-22: 22px;  --ob-earn-32: 32px;
+  --ob-earn-36: 36px;  --ob-earn-54: 54px;  --ob-earn-64: 64px;
+  --ob-earn-96: 96px;  --ob-earn-100: 100px;
+
+  /* ============================================================
+   *  SPACING — canonical scale (pt ≈ px)
+   * ============================================================ */
+
+  --ob-space-4:            4px;
+  --ob-space-8:            8px;
+  --ob-space-12:           12px;
+  --ob-space-14:           14px;
+  --ob-space-16:           16px;
+  --ob-space-20:           20px;
+  --ob-space-24:           24px;
+  --ob-space-28:           28px;
+  --ob-space-32:           32px;
+
+  --ob-space-section-h:    20px;   /* Setup content insets */
+  --ob-space-section-v:    32px;   /* Between major Setup sections */
+  --ob-space-card-inset-h: 12px;   /* Live card container h-padding */
+  --ob-space-card-inset-v: 8px;    /* Live card container v-padding */
+  --ob-space-card-gap:     8px;    /* Between side-by-side Live cards */
+  --ob-space-footer-h:     24px;   /* Live footer h-padding */
+  --ob-btn-pad-primary:    16px;   /* Start / New Session */
+  --ob-btn-pad-ghost:      13px;   /* End Session */
+
+  /* ============================================================
+   *  RADII — closed set; no drop shadows allowed
+   * ============================================================ */
+
+  --ob-radius-sm:          6px;    /* LOCAL/ZULU segment pill */
+  --ob-radius-md:          8px;    /* CA/FO segmented picker */
+  --ob-radius-ghost:       10px;   /* End Session ghost button */
+  --ob-radius-card:        12px;   /* Setup card, primary CTA */
+  --ob-radius-live-card:   16px;   /* Live two-pilot card */
+
+  /* Borders — always 0.5pt hairline on dark */
+  --ob-border-hairline:    0.5px;
+  --ob-border-1:           1px;    /* row dividers only */
+}
+
+/* ============================================================
+ *  SEMANTIC ALIASES — type roles as reusable classes
+ *  Use these directly in HTML, or as mixin targets.
+ * ============================================================ */
+
+.ob-label {
+  font-family: var(--ob-font-label);
+  font-weight: var(--ob-weight-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ob-track-row);
+  font-feature-settings: "cv11", "ss01";
+}
+
+.ob-label--section {
+  font-family: var(--ob-font-label);
+  font-weight: var(--ob-weight-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ob-track-section);
+  font-size: var(--ob-label-11);
+  color: var(--ob-muted);
+}
+
+.ob-label--hero {
+  font-family: var(--ob-font-label);
+  font-weight: var(--ob-weight-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ob-track-hero);
+  font-size: var(--ob-label-10);
+  color: var(--ob-amber);
+}
+
+.ob-clock {
+  font-family: var(--ob-font-clock);
+  font-weight: var(--ob-weight-clock);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "zero";
+}
+
+.ob-earnings {
+  font-family: var(--ob-font-earnings);
+  font-weight: var(--ob-weight-earnings);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Body / caption — rare but needed for the HHMM hint */
+.ob-body {
+  font-family: var(--ob-font-label);
+  font-weight: var(--ob-weight-body);
+  font-size: var(--ob-label-12);
+  color: rgba(255, 255, 255, 0.40);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ============================================================
+ *  CANVAS — apply to body of any OverBlock-branded doc
+ * ============================================================ */
+
+.ob-canvas {
+  background: var(--ob-bg);
+  color: var(--ob-text-primary);
+  font-family: var(--ob-font-label);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
